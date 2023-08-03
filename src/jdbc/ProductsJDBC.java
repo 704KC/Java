@@ -5,7 +5,7 @@
 package jdbc;
 
 import java.math.BigDecimal;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class ProductsJDBC {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Goodies_database", "root", "");
+        Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Goodies_database", "root", "");
         Statement st = con.createStatement();
         String table3 = "CREATE TABLE products ("
                 + "products_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, "
@@ -29,7 +29,7 @@ public class ProductsJDBC {
 
         st.executeUpdate(table3);
 
-        PreparedStatement ps = con.prepareStatement("INSERT INTO products ( Product_name, description,quantity,Price) VALUES (?, ?,?,?)");
+        PreparedStatement ps = con.preparedStatement("INSERT INTO products ( Product_name, description,quantity,Price) VALUES (?, ?,?,?)");
         String[][] productsData = {
             {"Sugar","A product of kakiraaa", "kg" ,"5000.0"},
             {"Headsets","Music", "","3900.0"}

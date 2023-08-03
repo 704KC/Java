@@ -31,7 +31,7 @@ public class RegisterJDBC {
 
         // Execute INSERT query using PreparedStatement
         PreparedStatement ps = conn.prepareStatement("INSERT INTO user_registration (registration_id,firstname, lastname, username, telephone, password, gender) VALUES (?, ?, ?, ?, ?, ?,?)");
-        ps.setInt(1, 005);
+        ps.setInt(1, 006);
         ps.setString(2, "hh");
         ps.setString(3, "Blue");
         ps.setString(4, "hjn");
